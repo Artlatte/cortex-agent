@@ -288,7 +288,7 @@ cortex-agent/
 │   ├── metrics.py      # 指标注册表 + Prometheus 导出
 │   ├── demo.py         # 离线演示
 │   └── cli.py          # 命令行入口
-├── tests/              # 30+ 单元/集成测试（含 MCP 模拟服务器）
+├── tests/              # 70 个单元/集成测试（含 MCP 模拟服务器，离线运行）
 ├── examples/           # 演示脚本 + 示例知识库 + 配置样例
 ├── docs/               # 需求分析、架构设计文档
 ├── docker/             # Dockerfile + compose
