@@ -130,7 +130,7 @@ class MCPClient:
             proc.terminate()
             try:
                 await asyncio.wait_for(proc.wait(), timeout=3.0)
-            except TimeoutError:
+            except (TimeoutError, asyncio.TimeoutError):
                 proc.kill()
                 await proc.wait()
 
@@ -163,7 +163,9 @@ class MCPClient:
             proc.stdin.write((json.dumps(payload) + "\n").encode())
             await proc.stdin.drain()
             return await asyncio.wait_for(future, timeout=self._request_timeout)
-        except TimeoutError as exc:
+        except (TimeoutError, asyncio.TimeoutError) as exc:
+            # On 3.10 asyncio.TimeoutError is a distinct class from the builtin
+            # TimeoutError; both must be caught.
             raise MCPError(
                 f"MCP request '{method}' timed out after {self._request_timeout}s"
             ) from exc
