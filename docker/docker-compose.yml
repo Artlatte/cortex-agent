@@ -1,0 +1,19 @@
+services:
+  cortex:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      # 生产环境：挂载真实配置并注入 API Key
+      # CORTEX_CONFIG: /app/config.json
+      # OPENAI_API_KEY: sk-...
+      # DEEPSEEK_API_KEY: sk-...
+      - CORTEX_LOG_LEVEL=INFO
+    volumes:
+      - cortex-data:/app/data
+    restart: unless-stopped
+
+volumes:
+  cortex-data:

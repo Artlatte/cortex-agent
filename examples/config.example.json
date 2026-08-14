@@ -1,0 +1,61 @@
+{
+  "log_level": "INFO",
+  "data_dir": "data",
+  "default_provider": "deepseek",
+  "providers": [
+    {
+      "name": "deepseek",
+      "kind": "openai",
+      "base_url": "https://api.deepseek.com/v1",
+      "api_key_env": "DEEPSEEK_API_KEY",
+      "model": "deepseek-chat"
+    },
+    {
+      "name": "openai",
+      "kind": "openai",
+      "base_url": "https://api.openai.com/v1",
+      "api_key_env": "OPENAI_API_KEY",
+      "model": "gpt-4o-mini"
+    },
+    {
+      "name": "claude",
+      "kind": "anthropic",
+      "api_key_env": "ANTHROPIC_API_KEY",
+      "model": "claude-3-5-sonnet-latest"
+    },
+    {
+      "name": "gemini",
+      "kind": "gemini",
+      "api_key_env": "GEMINI_API_KEY",
+      "model": "gemini-1.5-flash"
+    },
+    {
+      "name": "demo",
+      "kind": "demo",
+      "model": "demo-model"
+    }
+  ],
+  "circuit_breaker": { "failure_threshold": 5, "cooldown_seconds": 30 },
+  "embedding": {
+    "provider": "openai",
+    "base_url": "https://api.openai.com/v1",
+    "api_key_env": "OPENAI_API_KEY",
+    "model": "text-embedding-3-small",
+    "dim": 1536
+  },
+  "rag": {
+    "chunk_size": 512,
+    "chunk_overlap": 64,
+    "vector_weight": 0.5,
+    "top_k": 6,
+    "rrf_k": 60,
+    "reranker": "rule"
+  },
+  "memory": {
+    "short_term_max_turns": 12,
+    "summarize_enabled": true,
+    "long_term_db_path": "data/long_term.db"
+  },
+  "agent": { "max_iterations": 8, "token_budget": 8000, "temperature": 0.2 },
+  "api": { "host": "127.0.0.1", "port": 8000, "rate_limit_per_minute": 120 }
+}
