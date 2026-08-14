@@ -133,14 +133,4 @@ $env:CORTEX_CONFIG = "config.json"
 
 ---
 
-## 5 分钟演示提纲（面试 / 答辩用）
-
-1. **开跑**：`cortex demo rag` —— 展示"文档 → 检索 → 带引用答案"全过程；
-2. **讲混合检索**：BM25（关键词）+ 向量（语义）+ RRF 融合，为什么比纯向量检索好；
-3. **讲可靠性**：打开 `/metrics` 指指标——重试次数、熔断状态、调用量一目了然；
-4. **讲多 Agent**：Planner → 并行 Researcher → Critic（核查）→ Writer（成文）各司其职；
-5. **收尾**：零 API Key 可跑 = 面试官克隆下来就能验证，代码真实可信。
-
----
-
 更多细节见 [README](../README.md)、[架构文档](ARCHITECTURE.md) 与 [需求分析与技术方案](DESIGN.md)。
